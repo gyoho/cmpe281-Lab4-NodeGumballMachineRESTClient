@@ -1,0 +1,32 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
+    <head>
+        <title>Welcome to the Gumball Machine (NodeJS Client)</title>
+    </head>
+
+    <body>
+        <h1 align="center">Welcome to the Gumball Machine</h1>
+        <!-- FORM SECTION -->
+        <form name="gumballform" method="post" action="">
+            <input type="hidden" name="state" id="state" value="{state}" />
+            <input type="hidden" name="model" id="model" value="{model}" />
+            <input type="hidden" name="serial" id="serial" value="{serial}" />
+            <p>
+                <div align="center">
+                    <textarea name="message" cols="50" rows="10" readonly id="message">
+                        {message}
+                    </textarea>
+                </div>
+            </p>
+            <p align="center">
+                <img src="/images/giant-gumball-machine.jpg"  width="385" height="316">
+            </p>
+            <p align="center">
+                <input type="submit" name="event" id="btnInsertQuarter" value="Insert Quarter">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" name="event" id="btnTurnCrank" value="Turn Crank">
+            </p>
+        </form>
+        <!-- END FORM SECTION -->
+    </body>
+</html>
