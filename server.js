@@ -3,7 +3,8 @@
 var fs = require('fs');
 var express = require('express');
 var Client = require('node-rest-client').Client;
-var port = process.env.PORT || 8080;
+var ip = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 
 // configure app to use the packages we pulled in using npm
@@ -39,8 +40,9 @@ var page = function(req, res, state) {
 
 		var count = data.countGumballs;
 		console.log("count = " + count);
-		var msg = "\nMighty Gumball, Inc.\nNodeJS-Enabled Standing Gumball\n\n" + "---------------------------\n\n" + "Model# "
-                    + data.modelNumber + "\nSerial# " + data.serialNumber + "\n";
+		var msg = "\nMighty Gumball, Inc.\nNodeJS-Enabled Standing Gumball\n" + "Model# "
+                    + data.modelNumber + "\nSerial# " + data.serialNumber + "\n\n" + "---------------------------\n\n"
+			+ "State: " + state;
 
 		// Shoves in the content into the HTML page
 		var html_body = "" + body;
@@ -135,5 +137,5 @@ app.post("*", handle_post);
 
 
 // START THE SERVER
-app.listen(port);
-console.log('Server running on port ' + port);
+app.listen(port, ip);
+console.log('Server running at http://'+ip+':'+port+'/');
